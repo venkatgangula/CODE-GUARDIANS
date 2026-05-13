@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeRefine AI - 90s Style Code Review!</title>
+    
+    <!-- 90s Design System -->
+    <link rel="stylesheet" href="90s-style.css">
+    
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+    
+    <!-- Marked.js for markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        .code-block {
+            background: #0d1117;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
+        }
+        
+        .hljs {
+            background: transparent !important;
+            padding: 1rem;
+        }
+        
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .severity-critical { color: #dc2626; }
+        .severity-high { color: #ea580c; }
+        .severity-medium { color: #ca8a04; }
+        .severity-low { color: #16a34a; }
+        
+        .markdown-content h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .markdown-content h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .markdown-content h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .markdown-content p { margin-bottom: 0.75rem; }
+        .markdown-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+        .markdown-content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+        .markdown-content code { background-color: #374151; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
+        .markdown-content pre { background-color: #374151; padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 0.75rem; overflow-x: auto; }
+        .markdown-content blockquote { border-left: 4px solid #6b7280; padding-left: 1rem; font-style: italic; }
+        .markdown-content table { width: 100%; border-collapse: collapse; margin-bottom: 0.75rem; }
+        .markdown-content th { border: 2px solid #4b5563; padding: 0.5rem 1rem; background-color: #374151; }
+        .markdown-content td { border: 2px solid #4b5563; padding: 0.5rem 1rem; }
+    </style>
+</head>
+<body>
+    <!-- Marquee Announcement Bar -->
+    <div class="bg-construction text-90s-yellow" style="padding: 4px; border-bottom: 2px solid #000000;">
+        <marquee behavior="scroll" direction="left" scrollamount="6">
+            <span style="font-weight: bold; color: #000000;">🚀 WELCOME TO CODEREFINE AI - THE FUTURE OF CODE REVIEW IS HERE! 🚀</span>
+            <span style="font-weight: bold; color: #FF0000;">★ POWERED BY GROQ AI AND LLAMA 3.3 70B ★</span>
+            <span style="font-weight: bold; color: #0000FF;">🔥 ANALYZE YOUR CODE NOW! 🔥</span>
+        </marquee>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-90s-silver" style="border-bottom: 4px solid #000000;">
+        <div style="max-width: 1024px; margin: 0 auto; padding: 16px;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 32px; height: 32px; background: #0000FF; border: 2px solid; border-color: #ffffff #808080 #808080 #ffffff; box-shadow: inset -1px -1px 0 #404040, inset 1px 1px 0 #dfdfdf; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">AI</div>
+                    <h1 class="text-rainbow" style="font-size: 32px; margin: 0;">CodeRefine AI</h1>
+                </div>
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <span style="color: #808080; font-size: 14px;">90s Style Code Review</span>
+                    <button class="btn-outset bg-90s-silver text-90s-blue" style="padding: 8px 16px; font-weight: bold; text-transform: uppercase;">
+                        GitHub Mode
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hit Counter Section -->
+    <div style="max-width: 1024px; margin: 16px auto;">
+        <div class="hit-counter">
+            <div style="text-align: center;">
+                <div style="font-size: 18px; margin-bottom: 4px;">VISITOR COUNTER</div>
+                <div style="font-size: 24px; letter-spacing: 2px;">0001337</div>
+                <div style="font-size: 12px; margin-top: 4px;">SINCE 1997</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main style="max-width: 1024px; margin: 0 auto; padding: 16px;">
+        <!-- Input Section -->
+        <div style="margin-bottom: 32px;">
+            <div class="window-title">📝 CODE EDITOR</div>
+            <div class="panel-inset bg-90s-white" style="padding: 16px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                    <!-- Left Panel - Code Input -->
+                    <div>
+                        <h2 style="font-size: 20px; margin-bottom: 8px; color: #000080;">🔧 SOURCE CODE</h2>
+                        
+                        <!-- Language Selection -->
+                        <div style="margin-bottom: 12px;">
+                            <label for="language" style="font-weight: bold; display: block; margin-bottom: 4px;">PROGRAMMING LANGUAGE:</label>
+                            <select id="language" class="panel-inset bg-90s-white" style="width: 100%; padding: 4px; border: 2px solid; border-color: #808080 #ffffff #ffffff #808080; box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;">
+                                <option value="">SELECT LANGUAGE</option>
+                                <option value="python">PYTHON</option>
+                                <option value="javascript">JAVASCRIPT</option>
+                                <option value="java">JAVA</option>
+                                <option value="cpp">C++</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Code Input -->
+                        <div style="margin-bottom: 12px;">
+                            <label for="codeInput" style="font-weight: bold; display: block; margin-bottom: 4px;">PASTE YOUR CODE HERE:</label>
+                            <textarea 
+                                id="codeInput" 
+                                placeholder="// Paste your 90s-style code here..."
+                                class="panel-inset bg-90s-white"
+                                style="width: 100%; height: 200px; font-family: 'Courier New', monospace; font-size: 14px; padding: 8px; border: 2px solid; border-color: #808080 #ffffff #ffffff #808080; box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf; resize: none;"
+                            ></textarea>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div style="display: flex; gap: 8px;">
+                            <button id="reviewBtn" class="btn-outset bg-90s-blue text-white" style="flex: 1; padding: 12px; font-weight: bold; text-transform: uppercase; font-size: 16px;">
+                                🔍 ANALYZE CODE
+                            </button>
+                            <button id="clearBtn" class="btn-outset bg-90s-silver text-black" style="padding: 12px 16px; font-weight: bold; text-transform: uppercase;">
+                                🗑️ CLEAR
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Panel - Results -->
+                    <div>
+                        <h2 style="font-size: 20px; margin-bottom: 8px; color: #00AA00;">🤖 AI REVIEW RESULTS</h2>
+                        
+                        <!-- Results Container -->
+                        <div id="resultsContainer">
+                            <!-- Loading State -->
+                            <div id="loadingState" style="display: none;">
+                                <div style="text-align: center; padding: 24px;">
+                                    <div class="loading-spinner" style="margin: 0 auto 12px;"></div>
+                                    <p style="color: #808080;">Analyzing your code with 90s AI power...</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Error State -->
+                            <div id="errorState" style="display: none;">
+                                <div style="background: #FF0000; border: 2px solid #000000; padding: 12px;">
+                                    <div style="display: flex; align-items: center;">
+                                        <span style="margin-right: 8px;">❌</span>
+                                        <span style="font-weight: bold;">ERROR OCCURRED!</span>
+                                    </div>
+                                    <p id="errorMessage" style="margin-top: 8px; font-size: 14px;"></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Results Content -->
+                            <div id="resultsContent" style="display: none;">
+                                <!-- Issues Found -->
+                                <div id="issuesSection" style="margin-bottom: 16px; display: none;">
+                                    <h3 style="color: #FF0000; font-size: 18px; margin-bottom: 8px;">⚠️ ISSUES FOUND</h3>
+                                    <div id="issuesContent" class="panel-inset bg-90s-yellow" style="padding: 12px; font-family: 'Courier New', monospace; font-size: 12px;"></div>
+                                </div>
+                                
+                                <!-- Explanation -->
+                                <div id="explanationSection" style="margin-bottom: 16px; display: none;">
+                                    <h3 style="color: #0000FF; font-size: 18px; margin-bottom: 8px;">📋 EXPLANATION</h3>
+                                    <div id="explanationContent" class="panel-inset bg-90s-white markdown-content" style="padding: 12px;"></div>
+                                </div>
+                                
+                                <!-- Best Practices -->
+                                <div id="bestPracticesSection" style="margin-bottom: 16px; display: none;">
+                                    <h3 style="color: #00AA00; font-size: 18px; margin-bottom: 8px;">✨ BEST PRACTICES</h3>
+                                    <div id="bestPracticesContent" class="panel-inset bg-90s-white markdown-content" style="padding: 12px;"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Empty State -->
+                            <div id="emptyState" style="text-align: center; padding: 32px;">
+                                <div style="font-size: 48px; margin-bottom: 16px;">💻</div>
+                                <p style="color: #808080; font-size: 16px;">ENTER YOUR CODE AND CLICK "ANALYZE CODE"<br>TO SEE 90s STYLE AI RESULTS!</p>
+                                <div class="pulse-glow" style="display: inline-block; margin-top: 16px; padding: 8px 16px; background: #FF0000; color: white; font-weight: bold; text-transform: uppercase;">
+                                    NEW!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Code Comparison Section -->
+        <div id="comparisonSection" style="display: none;">
+            <div class="window-title">🔄 CODE COMPARISON</div>
+            <div class="panel-inset bg-90s-white" style="padding: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h2 style="font-size: 20px; margin: 0; color: #800080;">SIDE-BY-SIDE COMPARISON</h2>
+                    <div style="display: flex; gap: 8px;">
+                        <button id="copyOptimizedBtn" class="btn-outset bg-90s-green text-white" style="padding: 4px 8px; font-weight: bold; font-size: 12px;">
+                            📋 COPY
+                        </button>
+                        <button id="downloadOptimizedBtn" class="btn-outset bg-90s-blue text-white" style="padding: 4px 8px; font-weight: bold; font-size: 12px;">
+                            💾 DOWNLOAD
+                        </button>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <!-- Original Code -->
+                    <div>
+                        <h3 style="font-size: 16px; margin-bottom: 8px; color: #808080;">📄 ORIGINAL CODE</h3>
+                        <div class="code-block">
+                            <pre><code id="originalCode" class="language-python"></code></pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Optimized Code -->
+                    <div>
+                        <h3 style="font-size: 16px; margin-bottom: 8px; color: #00AA00;">⚡ OPTIMIZED CODE</h3>
+                        <div class="code-block">
+                            <pre><code id="optimizedCode" class="language-python"></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Horizontal Rule -->
+        <div class="hr-groove" style="margin: 32px 0;"></div>
+
+        <!-- Color Squares Decoration -->
+        <div style="margin: 32px 0;">
+            <h2 style="text-align: center; font-size: 24px; margin-bottom: 16px; color: #000080;">🎨 90s COLOR PALETTE</h2>
+            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; max-width: 400px; margin: 0 auto;">
+                <div style="background: #FF0000; border: 2px solid #000000; height: 60px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">RED</div>
+                <div style="background: #00FF00; border: 2px solid #000000; height: 60px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">GREEN</div>
+                <div style="background: #0000FF; border: 2px solid #000000; height: 60px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">BLUE</div>
+                <div style="background: #FFFF00; border: 2px solid #000000; height: 60px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">YELLOW</div>
+                <div style="background: #800080; border: 2px solid #000000; height: 60px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">PURPLE</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #000080; border-top: 4px solid #000000; margin-top: 32px; padding: 16px;">
+        <div style="max-width: 1024px; margin: 0 auto; text-align: center;">
+            <div style="color: white; font-weight: bold; margin-bottom: 8px;">🚀 POWERED BY GROQ AI & LLAMA 3.3 70B 🚀</div>
+            <div style="color: #C0C0C0; font-size: 14px;">
+                <div>© 1997 CodeRefine AI - All Rights Reserved</div>
+                <div>Made with ❤️ in the 90s aesthetic</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

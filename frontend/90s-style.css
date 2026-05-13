@@ -1,0 +1,152 @@
+/* 90s Retro Design System CSS */
+
+/* ====== FONTS ====== */
+@import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700;900&display=swap');
+
+body {
+    font-family: "MS Sans Serif", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #C0C0C0;
+    background-image:
+        linear-gradient(45deg, #b8b8b8 25%, transparent 25%),
+        linear-gradient(-45deg, #b8b8b8 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #b8b8b8 75%),
+        linear-gradient(-45deg, transparent 75%, #b8b8b8 75%);
+    background-size: 4px 4px;
+    background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+    color: #000000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Arial Black", Impact, Haettenschweiler, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+/* ====== 3D BEVEL EFFECTS ====== */
+.btn-outset {
+    border: 2px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    box-shadow: inset -1px -1px 0 #404040, inset 1px 1px 0 #dfdfdf;
+    text-decoration: none;
+    transition: none;
+}
+
+.btn-outset:hover {
+    background-color: #d0d0d0;
+}
+
+.btn-outset:active,
+.btn-outset.active {
+    border-color: #808080 #ffffff #ffffff #808080;
+    box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
+    transform: translate(1px, 1px);
+}
+
+.panel-inset {
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
+}
+
+.window-title {
+    background: linear-gradient(to right, #000080, #1084D0);
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    border: 2px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    box-shadow: inset -1px -1px 0 #404040, inset 1px 1px 0 #dfdfdf;
+}
+
+/* ====== RAINBOW TEXT ANIMATION ====== */
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    17% { color: #ff8000; }
+    33% { color: #ffff00; }
+    50% { color: #00ff00; }
+    67% { color: #0080ff; }
+    83% { color: #8000ff; }
+    100% { color: #ff0000; }
+}
+
+.text-rainbow {
+    animation: rainbow 4s linear infinite;
+}
+
+/* ====== PULSE GLOW ANIMATION ====== */
+@keyframes pulse-glow {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 0, 0, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px 2px rgba(255, 0, 0, 0.5);
+    }
+}
+
+.pulse-glow {
+    animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+/* ====== CONSTRUCTION STRIPES ====== */
+.bg-construction {
+    background: repeating-linear-gradient(
+        45deg,
+        #ffff00,
+        #ffff00 10px,
+        #000000 10px,
+        #000000 20px
+    );
+}
+
+/* ====== HORIZONTAL RULE GROOVE ====== */
+.hr-groove {
+    border: none;
+    height: 4px;
+    background: linear-gradient(
+        to bottom,
+        #808080 0%, #808080 50%,
+        #ffffff 50%, #ffffff 100%
+    );
+}
+
+/* ====== HIT COUNTER STYLE ====== */
+.hit-counter {
+    background: #000080;
+    color: #00FF00;
+    font-family: "Courier New", Courier, monospace;
+    border: 2px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
+    padding: 8px 12px;
+    font-weight: bold;
+}
+
+/* ====== COLOR CLASSES ====== */
+.bg-90s-silver { background-color: #C0C0C0; }
+.bg-90s-white { background-color: #FFFFFF; }
+.bg-90s-yellow { background-color: #FFFFCC; }
+.bg-90s-light-gray { background-color: #E8E8E8; }
+
+.text-90s-blue { color: #0000FF; }
+.text-90s-red { color: #FF0000; }
+.text-90s-green { color: #00FF00; }
+.text-90s-yellow { color: #FFFF00; }
+.text-90s-purple { color: #800080; }
+
+.border-90s-black { border-color: #000000; }
+.border-90s-gray { border-color: #808080; }
+
+/* ====== FOCUS STYLES ====== */
+.focus-90s:focus {
+    outline: 2px dotted #000000;
+    outline-offset: 2px;
+}
+
+/* ====== REDUCED MOTION ====== */
+@media (prefers-reduced-motion: reduce) {
+    .text-rainbow { animation: none; color: #ff0000; }
+    .pulse-glow { animation: none; }
+    .marquee-container { animation: none; }
+}

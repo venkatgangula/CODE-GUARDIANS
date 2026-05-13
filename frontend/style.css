@@ -1,0 +1,293 @@
+/* Additional custom styles for CodeRefine AI */
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+/* Textarea focus styles */
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Button hover effects */
+button {
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Code block improvements */
+.code-block {
+    position: relative;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.code-block::-webkit-scrollbar {
+    width: 6px;
+}
+
+.code-block::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.code-block::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 3px;
+}
+
+/* Loading animation improvements */
+.loading-spinner {
+    border: 3px solid #374151;
+    border-top: 3px solid #3b82f6;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Toast notification styles */
+.toast {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Markdown content improvements */
+.markdown-content {
+    line-height: 1.6;
+}
+
+.markdown-content pre {
+    background: #0d1117 !important;
+    border: 1px solid #30363d;
+}
+
+.markdown-content code {
+    background: #374151 !important;
+    color: #e5e7eb;
+}
+
+/* Issues table styles */
+.issues-table {
+    font-size: 0.875rem;
+}
+
+.issues-table th {
+    font-weight: 600;
+    color: #d1d5db;
+}
+
+.issues-table td {
+    vertical-align: top;
+}
+
+/* Severity badge styles */
+.severity-badge {
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.severity-critical {
+    background-color: rgba(220, 38, 38, 0.2);
+    color: #f87171;
+}
+
+.severity-high {
+    background-color: rgba(234, 88, 12, 0.2);
+    color: #fb923c;
+}
+
+.severity-medium {
+    background-color: rgba(202, 138, 4, 0.2);
+    color: #fbbf24;
+}
+
+.severity-low {
+    background-color: rgba(22, 163, 74, 0.2);
+    color: #4ade80;
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .grid-cols-1.lg\\:grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .code-block {
+        max-height: 300px;
+    }
+}
+
+/* Focus management */
+.focus-visible:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Enhanced button states */
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    border: 1px solid #2563eb;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-secondary {
+    background: #374151;
+    border: 1px solid #4b5563;
+}
+
+.btn-secondary:hover {
+    background: #4b5563;
+    border-color: #6b7280;
+}
+
+/* Card hover effects */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Pulse animation for new features */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Syntax highlighting theme adjustments */
+.hljs-comment,
+.hljs-quote {
+    color: #8b949e;
+    font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+    color: #ff7b72;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+    color: #79c0ff;
+}
+
+.hljs-string,
+.hljs-doctag {
+    color: #a5d6ff;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+    color: #d2a8ff;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+    color: #ffa657;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+    color: #7ee787;
+}
+
+.hljs-regexp,
+.hljs-link {
+    color: #96d0ff;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+    color: #ffa198;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+    color: #ffa657;
+}
+
+.hljs-meta {
+    color: #7ee787;
+}
+
+.hljs-deletion {
+    background: rgba(248, 81, 73, 0.2);
+}
+
+.hljs-addition {
+    background: rgba(64, 160, 43, 0.2);
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}
